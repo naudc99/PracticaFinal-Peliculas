@@ -2,6 +2,8 @@ package es.fct.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ComentariosRepository extends JpaRepository<ComentariosRepository, Integer> {
+import es.fct.model.Comentarios;
+
+public interface ComentariosRepository extends JpaRepository<Comentarios, Integer> {
 
 }

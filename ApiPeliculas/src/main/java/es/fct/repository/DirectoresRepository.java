@@ -2,6 +2,8 @@ package es.fct.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DirectoresRepository extends JpaRepository<DirectoresRepository, Integer> {
+import es.fct.model.Directores;
+
+public interface DirectoresRepository extends JpaRepository<Directores, Integer> {
 
 }
