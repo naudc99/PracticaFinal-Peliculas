@@ -27,7 +27,6 @@ public class Directores {
     @Column(nullable = false, length = 100)
     private String apellido;
 
-    // Relación con Peliculas
     @OneToMany(mappedBy = "director")
     private List<Peliculas> peliculas;
 }

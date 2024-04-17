@@ -26,7 +26,6 @@ public class Generos {
     @Column(nullable = false, length = 50)
     private String nombre;
 
-    // Relación con Peliculas
     @OneToMany(mappedBy = "genero")
     private List<Peliculas> peliculas;
 }
