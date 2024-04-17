@@ -1,8 +1,12 @@
 package es.fct.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import es.fct.model.Actor;
 import es.fct.model.Comentario;
 import es.fct.repository.ComentarioRepository;
 
@@ -32,6 +36,11 @@ public class ComentarioService {
         return comentarioRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    
+    public ResponseEntity<Comentario> createComentario(@RequestBody Comentario comentario) {
+        Comentario savedComentario = comentarioRepository.save(comentario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedComentario);
     }
 
     public ResponseEntity<Comentario> updateComentario(int id, Comentario comentario) {

@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import es.fct.model.Comentario;
 import es.fct.model.Director;
 import es.fct.repository.DirectorRepository;
 
@@ -34,6 +37,11 @@ public class DirectorService {
         return directorRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    
+    public ResponseEntity<Director> createDirector(@RequestBody Director director) {
+        Director saveDirector= directorRepository.save(director);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveDirector);
     }
 
     public ResponseEntity<Director> updateDirector(int id, Director director) {

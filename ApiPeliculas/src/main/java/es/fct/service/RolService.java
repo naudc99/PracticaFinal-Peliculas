@@ -1,8 +1,12 @@
 package es.fct.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import es.fct.model.Actor;
 import es.fct.model.Rol;
 import es.fct.repository.RolRepository;
 
@@ -34,6 +38,11 @@ public class RolService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    public ResponseEntity<Rol> createRol(@RequestBody Rol rol) {
+        Rol savedRol = rolRepository.save(rol);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedRol);
+    }
+    
     public ResponseEntity<Rol> updateRol(int id, Rol rol) {
         Optional<Rol> existingRolOptional = rolRepository.findById(id);
 

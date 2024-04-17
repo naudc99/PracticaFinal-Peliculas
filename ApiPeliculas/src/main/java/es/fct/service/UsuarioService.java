@@ -1,9 +1,15 @@
 package es.fct.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import es.fct.model.Actor;
+import es.fct.model.Genero;
 import es.fct.model.Usuario;
+import es.fct.repository.GeneroRepository;
 import es.fct.repository.UsuarioRepository;
 
 import java.util.List;
@@ -34,6 +40,11 @@ public class UsuarioService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
+    	Usuario saveUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveUsuario);
+    }
+    
     public ResponseEntity<Usuario> updateUsuario(int id, Usuario usuario) {
         Optional<Usuario> existingUsuarioOptional = usuarioRepository.findById(id);
 

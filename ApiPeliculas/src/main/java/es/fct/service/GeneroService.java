@@ -1,9 +1,12 @@
 package es.fct.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import es.fct.model.Actor;
 import es.fct.model.Genero;
 import es.fct.repository.GeneroRepository;
 
@@ -33,6 +36,11 @@ public class GeneroService {
         return generoRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    
+    public ResponseEntity<Genero> createGenero(@RequestBody Genero genero){
+    	Genero saveGenero = generoRepository.save(genero);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveGenero);
     }
 
     public ResponseEntity<Genero> updateGenero(int id, Genero genero) {
