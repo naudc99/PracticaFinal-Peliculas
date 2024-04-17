@@ -29,6 +29,9 @@ public class Pelicula {
 
     @Column(columnDefinition = "TEXT")
     private String sinopsis;
+    
+    @Column(nullable = false, length = 255)
+    private String imagen;
 
     @ManyToOne
     @JoinColumn(name = "idGenero", nullable = false)
@@ -44,7 +47,6 @@ public class Pelicula {
     @Column(length = 255)
     private String actoresActuantes;
 
-    // Relación con Actores
     @ManyToMany
     @JoinTable(
         name = "PeliculasActores",

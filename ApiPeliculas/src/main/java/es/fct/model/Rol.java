@@ -23,7 +23,6 @@ public class Rol {
     @Column(nullable = false, length = 50)
     private String nombre;
 
-    // Relación con Usuarios
     @OneToMany(mappedBy = "rol")
     private List<Usuario> usuarios;
 }

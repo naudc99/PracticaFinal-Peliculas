@@ -1,6 +1,7 @@
 package es.fct.model;
 
 import java.security.Timestamp;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,5 +40,5 @@ public class Comentario {
     private Integer puntuacion;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp fecha;
+    private Date fecha;
 }

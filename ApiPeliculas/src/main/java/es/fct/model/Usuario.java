@@ -31,17 +31,15 @@ public class Usuario {
     private String email;
 
     @Column(nullable = false, length = 255)
-    private String contraseña;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "idRol", nullable = false)
     private Rol rol;
 
-    // Relación con Favoritos
     @OneToMany(mappedBy = "usuario")
     private List<Favorito> favoritos;
 
-    // Relación con Comentarios
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
 }
