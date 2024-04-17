@@ -11,24 +11,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Directores")
-public class Directores {
+@Table(name = "Roles")
+public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDirector;
+    private int idRol;
     
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String nombre;
 
-    @Column(nullable = false, length = 100)
-    private String apellido;
-
-    // Relación con Peliculas
-    @OneToMany(mappedBy = "director")
-    private List<Peliculas> peliculas;
+    // Relación con Usuarios
+    @OneToMany(mappedBy = "rol")
+    private List<Usuario> usuarios;
 }
 

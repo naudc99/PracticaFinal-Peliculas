@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class PeliculasActores {
     @ManyToOne
     @JoinColumn(name = "idPelicula", nullable = false)
-    private Peliculas pelicula;
+    private Pelicula pelicula;
 
     @ManyToOne
     @JoinColumn(name = "idActor", nullable = false)
-    private Actores actor;
+    private Actor actor;
 }

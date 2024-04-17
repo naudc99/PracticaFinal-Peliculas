@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "Peliculas")
-public class Peliculas {
+public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPelicula;
@@ -32,11 +32,11 @@ public class Peliculas {
 
     @ManyToOne
     @JoinColumn(name = "idGenero", nullable = false)
-    private Generos genero;
+    private Genero genero;
 
     @ManyToOne
     @JoinColumn(name = "idDirector", nullable = false)
-    private Directores director;
+    private Director director;
 
     @Column
     private Integer anioEstreno;
@@ -51,6 +51,6 @@ public class Peliculas {
         joinColumns = @JoinColumn(name = "idPelicula"),
         inverseJoinColumns = @JoinColumn(name = "idActor")
     )
-    private List<Actores> actores;
+    private List<Actor> actores;
 }
 

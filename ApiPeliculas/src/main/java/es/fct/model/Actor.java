@@ -8,23 +8,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Roles")
-public class Roles {
+@Table(name = "Actores")
+public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRol;
+    private int idActor;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String nombre;
 
-    // Relación con Usuarios
-    @OneToMany(mappedBy = "rol")
-    private List<Usuarios> usuarios;
+    @Column(nullable = false, length = 100)
+    private String apellido;
+
+    // Relación con Peliculas
+    @ManyToMany(mappedBy = "actores")
+    private List<Pelicula> peliculas;
 }
 

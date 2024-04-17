@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "Usuarios")
-public class Usuarios {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -35,14 +35,14 @@ public class Usuarios {
 
     @ManyToOne
     @JoinColumn(name = "idRol", nullable = false)
-    private Roles rol;
+    private Rol rol;
 
     // Relación con Favoritos
     @OneToMany(mappedBy = "usuario")
-    private List<Favoritos> favoritos;
+    private List<Favorito> favoritos;
 
     // Relación con Comentarios
     @OneToMany(mappedBy = "usuario")
-    private List<Comentarios> comentarios;
+    private List<Comentario> comentarios;
 }
 

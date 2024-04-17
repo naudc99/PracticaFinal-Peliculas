@@ -1,5 +1,6 @@
 package es.fct.model;
 
+import lombok.*;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -9,25 +10,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Generos")
-public class Generos {
+@Table(name = "Directores")
+public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idGenero;
+    private int idDirector;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String nombre;
 
+    @Column(nullable = false, length = 100)
+    private String apellido;
+
     // Relación con Peliculas
-    @OneToMany(mappedBy = "genero")
-    private List<Peliculas> peliculas;
+    @OneToMany(mappedBy = "director")
+    private List<Pelicula> peliculas;
 }
 
