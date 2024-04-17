@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "Usuarios")
-public class Usuario {
+public class Usuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -42,5 +42,6 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
+    
 }
 
