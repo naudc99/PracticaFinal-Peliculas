@@ -38,6 +38,9 @@ public class ActorService {
     }
 
     public ResponseEntity<Actor> createActor(@RequestBody Actor actor) {
+    	if (actor.getNombre() == null || actor.getApellido() == null) {
+                return ResponseEntity.badRequest().build();
+        }
         Actor savedActor = actorRepository.save(actor);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedActor);
     }

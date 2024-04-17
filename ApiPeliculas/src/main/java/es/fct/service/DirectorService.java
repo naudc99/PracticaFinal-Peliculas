@@ -40,6 +40,10 @@ public class DirectorService {
     }
     
     public ResponseEntity<Director> createDirector(@RequestBody Director director) {
+    	if (director.getNombre() == null || director.getApellido() == null) {
+            return ResponseEntity.badRequest().build();
+    	}
+    	
         Director saveDirector= directorRepository.save(director);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveDirector);
     }

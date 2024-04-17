@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import es.fct.model.Actor;
+import es.fct.model.Director;
 import es.fct.model.Genero;
 import es.fct.repository.GeneroRepository;
 
@@ -39,6 +40,9 @@ public class GeneroService {
     }
     
     public ResponseEntity<Genero> createGenero(@RequestBody Genero genero){
+    	if (genero.getNombre() == null) {
+            return ResponseEntity.badRequest().build();
+    	}
     	Genero saveGenero = generoRepository.save(genero);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveGenero);
     }

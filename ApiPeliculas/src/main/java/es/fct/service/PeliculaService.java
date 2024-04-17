@@ -39,6 +39,9 @@ public class PeliculaService {
     }
     
     public ResponseEntity<Pelicula> createPelicula(@RequestBody Pelicula pelicula) {
+    	if (pelicula.getTitulo() == null || pelicula.getSinopsis() == null || pelicula.getAnioEstreno() == null) {
+            return ResponseEntity.badRequest().build();
+    	}
         Pelicula savedPelicula = peliculaRepository.save(pelicula);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedPelicula);
     }

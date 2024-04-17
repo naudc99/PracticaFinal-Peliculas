@@ -41,6 +41,9 @@ public class UsuarioService {
     }
 
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
+    	if (usuario.getNombreUsuario() == null || usuario.getEmail() == null || usuario.getPassword() == null) {
+            return ResponseEntity.badRequest().build();
+    	}
     	Usuario saveUsuario = usuarioRepository.save(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveUsuario);
     }

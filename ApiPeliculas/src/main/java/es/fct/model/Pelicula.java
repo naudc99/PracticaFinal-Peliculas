@@ -44,9 +44,6 @@ public class Pelicula {
     @Column
     private Integer anioEstreno;
 
-    @Column(length = 255)
-    private String actoresActuantes;
-
     @ManyToMany
     @JoinTable(
         name = "PeliculasActores",
