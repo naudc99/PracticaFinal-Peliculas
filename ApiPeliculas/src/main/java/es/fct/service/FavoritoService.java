@@ -43,7 +43,7 @@ public class FavoritoService {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedFavorito);
     }
 
-    public ResponseEntity<Favorito> updateFavorito(int id, Favorito favoritos) {
+    public ResponseEntity<Favorito> updateFavorito(int id, Favorito favorito) {
         Optional<Favorito> existingFavoritoOptional = favoritoRepository.findById(id);
 
         if (existingFavoritoOptional.isEmpty()) {

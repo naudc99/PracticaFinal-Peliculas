@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

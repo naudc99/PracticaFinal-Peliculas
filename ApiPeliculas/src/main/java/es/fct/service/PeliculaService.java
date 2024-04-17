@@ -65,9 +65,6 @@ public class PeliculaService {
             existingPelicula.setAnioEstreno(pelicula.getAnioEstreno());
         }
 
-        if (pelicula.getActoresActuantes() != null) {
-            existingPelicula.setActoresActuantes(pelicula.getActoresActuantes());
-        }
 
         Pelicula updatedPelicula = peliculaRepository.save(existingPelicula);
         return ResponseEntity.ok(updatedPelicula);

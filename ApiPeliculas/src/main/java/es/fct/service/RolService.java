@@ -51,7 +51,10 @@ public class RolService {
         }
 
         Rol existingRol = existingRolOptional.get();
-
+        
+        if (rol.getNombre() != null) {
+            existingRol.setNombre(rol.getNombre());
+        }
 
         Rol updatedRol = rolRepository.save(existingRol);
         return ResponseEntity.ok(updatedRol);
