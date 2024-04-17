@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import  {  Observable, throwError, catchError, BehaviorSubject , tap, map} from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { RegisterRequest } from './registerRequest';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

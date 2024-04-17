@@ -6,7 +6,14 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PeliculasComponent } from './pages/peliculas/peliculas.component';
+import { DirectoresComponent } from './pages/directores/directores.component';
+import { ActoresComponent } from './pages/actores/actores.component';
+import { GenerosComponent } from './pages/generos/generos.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +21,18 @@ import { RegisterComponent } from './auth/register/register.component';
     FooterComponent,
     HeaderComponent,
     NavComponent,
-    RegisterComponent
+    RegisterComponent, 
+    LoginComponent,
+    DashboardComponent,
+    PeliculasComponent,
+    DirectoresComponent,
+    ActoresComponent,
+    GenerosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
