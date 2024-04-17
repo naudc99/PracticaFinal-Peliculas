@@ -1,15 +1,24 @@
 package es.fct.security.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import org.springframework.security.core.GrantedAuthority;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Role {
 
-public enum Role implements GrantedAuthority {
-    ROLE_USER,
-    ROLE_ADMIN;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    @Override
-    public String getAuthority() {
-        return name();
-    }
+    private String name;
+
 }
+
 
