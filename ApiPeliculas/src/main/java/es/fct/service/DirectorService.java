@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import es.fct.model.Actor;
 import es.fct.model.Comentario;
 import es.fct.model.Director;
+import es.fct.model.Pelicula;
 import es.fct.repository.DirectorRepository;
+import es.fct.repository.PeliculaRepository;
 
 @Service
 public class DirectorService {
@@ -79,6 +82,9 @@ public class DirectorService {
         directorRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    
+    
+    
 }
 
 

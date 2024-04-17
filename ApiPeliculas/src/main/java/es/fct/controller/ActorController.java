@@ -52,5 +52,6 @@ public class ActorController {
     public ResponseEntity<Void> deleteActor(@PathVariable Integer id) {
         return actorService.deleteActor(id);
     }
+    
 }
 

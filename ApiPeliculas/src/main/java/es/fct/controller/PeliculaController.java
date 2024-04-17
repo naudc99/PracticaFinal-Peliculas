@@ -52,4 +52,19 @@ public class PeliculaController {
     public ResponseEntity<Void> deletePelicula(@PathVariable Integer id) {
         return peliculaService.deletePelicula(id);
     }
+    
+    @PostMapping("/{peliculaId}/actores/{actorId}")
+    public ResponseEntity<Pelicula> addActorToPelicula(@PathVariable int peliculaId, @PathVariable int actorId) {
+        return peliculaService.addActorToPelicula(peliculaId, actorId);
+    }
+    
+    @PostMapping("/{peliculaId}/directores/{directorId}")
+    public ResponseEntity<Pelicula> addDirectorToPelicula(@PathVariable int peliculaId, @PathVariable int directorId) {
+        return peliculaService.addDirectorToPelicula(peliculaId, directorId);
+    }
+    @PostMapping("/{peliculaId}/generos/{generoId}")
+    public ResponseEntity<Pelicula> addGeneroToPelicula(@PathVariable int peliculaId, @PathVariable int generoId) {
+        return peliculaService.addGeneroToPelicula(peliculaId, generoId);
+    }
+
 }

@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import es.fct.model.Actor;
 import es.fct.model.Genero;
+import es.fct.model.Rol;
 import es.fct.model.Usuario;
 import es.fct.repository.GeneroRepository;
+import es.fct.repository.RolRepository;
 import es.fct.repository.UsuarioRepository;
 
 import java.util.List;
@@ -19,10 +21,12 @@ import java.util.Optional;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final RolRepository rolRepository;
 
     @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, RolRepository rolRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.rolRepository = rolRepository; 
     }
 
     public Usuario saveUsuario(Usuario usuario) {
@@ -83,5 +87,22 @@ public class UsuarioService {
 
         usuarioRepository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    public ResponseEntity<Usuario> addRoltoUsuario(int usuarioId, int rolId) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
+        Optional<Rol> rolOptional = rolRepository.findById(rolId);
+
+        if (usuarioOptional.isEmpty() || rolOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Usuario usuario = usuarioOptional.get();
+        Rol rol = rolOptional.get();
+
+        usuario.setRol(rol);
+
+        Usuario updatedUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.ok(updatedUsuario);
     }
 }

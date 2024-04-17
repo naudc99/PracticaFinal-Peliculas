@@ -10,6 +10,7 @@ import es.fct.model.Actor;
 import es.fct.model.Director;
 import es.fct.model.Genero;
 import es.fct.repository.GeneroRepository;
+import es.fct.repository.PeliculaRepository;
 
 import java.util.List;
 import java.util.Optional;

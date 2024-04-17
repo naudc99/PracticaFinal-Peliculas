@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.fct.model.Pelicula;
 import es.fct.model.Usuario;
 import es.fct.service.UsuarioService;
 
@@ -51,5 +52,10 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable Integer id) {
         return usuarioService.deleteUsuario(id);
+    }
+    
+    @PostMapping("/{usuarioId}/roles/{rolId}")
+    public ResponseEntity<Usuario> addRoltoUsuario(@PathVariable int usuarioId, @PathVariable int rolId) {
+        return usuarioService.addRoltoUsuario(usuarioId, rolId);
     }
 }
