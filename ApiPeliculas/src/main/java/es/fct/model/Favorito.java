@@ -1,5 +1,6 @@
 package es.fct.model;
 
+import es.fct.security.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Favorito {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
     @ManyToOne
     @JoinColumn(name = "idPelicula", nullable = false)

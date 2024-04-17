@@ -3,6 +3,7 @@ package es.fct.model;
 import java.security.Timestamp;
 import java.util.Date;
 
+import es.fct.security.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Comentario {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
     @ManyToOne
     @JoinColumn(name = "idPelicula", nullable = false)
