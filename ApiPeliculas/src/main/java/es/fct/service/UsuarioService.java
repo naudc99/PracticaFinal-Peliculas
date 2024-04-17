@@ -62,8 +62,8 @@ public class UsuarioService {
             existingUsuario.setEmail(usuario.getEmail());
         }
 
-        if (usuario.getContraseña() != null) {
-            existingUsuario.setContraseña(usuario.getContraseña());
+        if (usuario.getPassword() != null) {
+            existingUsuario.setPassword(usuario.getPassword());
         }
 
 
