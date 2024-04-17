@@ -1,9 +1,10 @@
-nav {
+nav{
     display: flex;
     gap: 20px;
+    background-color: #2B4162;
 }
 
-a {
+ul li a {
     color: #F5F0F6; 
     text-decoration: none;
     padding: 5px 10px;
@@ -12,5 +13,5 @@ a {
 }
 
 a:hover {
-    background-color: #385F71;
+    background-color: #D7B377;
 }
