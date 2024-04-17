@@ -1,0 +1,17 @@
+nav{
+    display: flex;
+    gap: 20px;
+    background-color: #2B4162;
+}
+
+ul li a {
+    color: #F5F0F6; 
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #D7B377;
+}
