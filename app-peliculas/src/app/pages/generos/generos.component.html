@@ -1,1 +1,9 @@
-<p>generos works!</p>
+<div class="row">
+    <div *ngFor="let genero of generos" class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 (click)="verPeliculasPorGenero(genero.id)" class="card-title">{{ genero.nombre }}</h5>
+        </div>
+      </div>
+    </div>
+</div>
