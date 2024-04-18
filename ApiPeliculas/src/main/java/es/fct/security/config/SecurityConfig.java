@@ -20,6 +20,7 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authProvider;
+    private final String roleAdmin="ADMIN";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
@@ -32,6 +33,9 @@ public class SecurityConfig {
               authRequest
                 .requestMatchers(HttpMethod.GET).permitAll()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                .requestMatchers(HttpMethod.POST).hasRole(roleAdmin)
+                .requestMatchers(HttpMethod.PUT).hasRole(roleAdmin)
+                .requestMatchers(HttpMethod.DELETE).hasRole(roleAdmin)
                 .requestMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated()
                 )
