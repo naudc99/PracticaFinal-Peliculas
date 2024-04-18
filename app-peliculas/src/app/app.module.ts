@@ -14,6 +14,9 @@ import { PeliculasComponent } from './pages/peliculas/peliculas.component';
 import { DirectoresComponent } from './pages/directores/directores.component';
 import { ActoresComponent } from './pages/actores/actores.component';
 import { GenerosComponent } from './pages/generos/generos.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DetallePeliculaComponent } from './pages/detalle-pelicula/detalle-pelicula.component';
+import { PeliculasPorGeneroComponent } from './pages/peliculas-por-genero/peliculas-por-genero.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,14 @@ import { GenerosComponent } from './pages/generos/generos.component';
     DirectoresComponent,
     ActoresComponent,
     GenerosComponent,
+    DetallePeliculaComponent,
+    PeliculasPorGeneroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

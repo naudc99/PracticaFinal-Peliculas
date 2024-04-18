@@ -3,6 +3,8 @@ package es.fct.model;
 import lombok.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,10 +37,12 @@ public class Pelicula {
 
     @ManyToOne
     @JoinColumn(name = "idGenero", nullable = false)
+    @JsonIgnore
     private Genero genero;
 
     @ManyToOne
     @JoinColumn(name = "idDirector", nullable = false)
+    @JsonIgnore
     private Director director;
 
     @Column
@@ -50,6 +54,7 @@ public class Pelicula {
         joinColumns = @JoinColumn(name = "idPelicula"),
         inverseJoinColumns = @JoinColumn(name = "idActor")
     )
+    @JsonIgnore
     private List<Actor> actores;
 }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.fct.model.Pelicula;
@@ -53,18 +54,11 @@ public class PeliculaController {
         return peliculaService.deletePelicula(id);
     }
     
-    @PostMapping("/{peliculaId}/actores/{actorId}")
-    public ResponseEntity<Pelicula> addActorToPelicula(@PathVariable int peliculaId, @PathVariable int actorId) {
-        return peliculaService.addActorToPelicula(peliculaId, actorId);
+    @GetMapping("/genero/{idGenero}")
+    public List<Pelicula> getPeliculasByGenero(@PathVariable("idGenero") Integer idGenero) {
+        return peliculaService.getPeliculasByGenero(idGenero);
     }
-    
-    @PostMapping("/{peliculaId}/directores/{directorId}")
-    public ResponseEntity<Pelicula> addDirectorToPelicula(@PathVariable int peliculaId, @PathVariable int directorId) {
-        return peliculaService.addDirectorToPelicula(peliculaId, directorId);
-    }
-    @PostMapping("/{peliculaId}/generos/{generoId}")
-    public ResponseEntity<Pelicula> addGeneroToPelicula(@PathVariable int peliculaId, @PathVariable int generoId) {
-        return peliculaService.addGeneroToPelicula(peliculaId, generoId);
-    }
+
+
 
 }

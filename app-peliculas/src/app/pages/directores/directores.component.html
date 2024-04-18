@@ -1,1 +1,10 @@
-<p>directores works!</p>
+<div class="row">
+    <div *ngFor="let director of directores" class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ director.nombre }}</h5>
+          <h5 class="card-title">{{ director.apellido }}</h5>
+        </div>
+      </div>
+    </div>
+</div>

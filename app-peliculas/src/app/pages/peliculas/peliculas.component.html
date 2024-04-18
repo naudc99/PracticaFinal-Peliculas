@@ -1,1 +1,10 @@
-<p>peliculas works!</p>
+<div class="row">
+    <div *ngFor="let pelicula of peliculas" class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 (click)="verDetalle(pelicula.idPelicula)" class="card-title">{{ pelicula.titulo }}</h5>
+        </div>
+      </div>
+    </div>
+</div>
+  

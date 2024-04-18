@@ -1,42 +1,39 @@
 package es.fct.security.user;
 
 import org.springframework.stereotype.Service;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private final UserRepository userRepository; 
+
+    private final UserRepository userRepository;
 
     @Transactional
     public UserResponse updateUser(UserRequest userRequest) {
-       
         User user = User.builder()
-        .id(userRequest.id)
-        .firstname(userRequest.getFirstname())
-        .lastname(userRequest.lastname)
-        .country(userRequest.getCountry())
-        .role(Role.ROLE_USER)
-        .build();
-        
-        userRepository.updateUser(user.id, user.firstname, user.lastname, user.country);
+                .id(userRequest.getId())
+                .username(userRequest.getUsername())
+                .email(userRequest.getEmail())
+                .password(userRequest.getPassword())
+                .build();
 
-        return new UserResponse("El usuario se registró satisfactoriamente");
+        userRepository.updateUser(user.getId(), user.getUsername(), user.getEmail(), user.getPassword());
+
+        return new UserResponse("El usuario se actualizó satisfactoriamente");
     }
 
-    public UserDTO getUser(Integer id) {
-        User user= userRepository.findById(id).orElse(null);
-       
-        if (user!=null)
-        {
+    public UserDTO getUser(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+
+        if (user != null) {
             UserDTO userDTO = UserDTO.builder()
-            .id(user.id)
-            .username(user.username)
-            .firstname(user.firstname)
-            .lastname(user.lastname)
-            .country(user.country)
-            .build();
+                    .id(user.getId())
+                    .username(user.getUsername())
+                    .email(user.getEmail())
+                    .password(user.getPassword())
+                    .build();
             return userDTO;
         }
         return null;

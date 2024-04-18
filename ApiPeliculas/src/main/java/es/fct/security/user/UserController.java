@@ -16,22 +16,24 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class UserController {
+    
     private final UserService userService;
     
     @GetMapping(value = "{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Integer id)
-    {
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
         UserDTO userDTO = userService.getUser(id);
-        if (userDTO==null)
-        {
-           return ResponseEntity.notFound().build();
+        if (userDTO == null) {
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(userDTO);
     }
 
-    @PutMapping()
-    public ResponseEntity<UserResponse> updateUser(@RequestBody UserRequest userRequest)
-    {
-        return ResponseEntity.ok(userService.updateUser(userRequest));
+    @PutMapping
+    public ResponseEntity<UserResponse> updateUser(@RequestBody UserRequest userRequest) {
+        UserResponse userResponse = userService.updateUser(userRequest);
+        if (userResponse == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(userResponse);
     }
 }
