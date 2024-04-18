@@ -3,6 +3,8 @@ package es.fct.model;
 import lombok.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class Actor {
     private String apellido;
 
     @ManyToMany(mappedBy = "actores")
+    @JsonIgnore
     private List<Pelicula> peliculas;
 }
 
