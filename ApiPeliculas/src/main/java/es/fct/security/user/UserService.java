@@ -17,7 +17,7 @@ public class UserService {
         .firstname(userRequest.getFirstname())
         .lastname(userRequest.lastname)
         .country(userRequest.getCountry())
-        .role(Role.ROLE_USER)
+        .role()
         .build();
         
         userRepository.updateUser(user.id, user.firstname, user.lastname, user.country);

@@ -15,6 +15,7 @@ import es.fct.repository.DirectorRepository;
 import es.fct.repository.GeneroRepository;
 import es.fct.repository.PeliculaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,9 +55,33 @@ public class PeliculaService {
     }
     
     public ResponseEntity<Pelicula> createPelicula(@RequestBody Pelicula pelicula) {
-    	if (pelicula.getTitulo() == null || pelicula.getSinopsis() == null || pelicula.getAnioEstreno() == null) {
+        if (pelicula.getTitulo() == null || pelicula.getSinopsis() == null || pelicula.getAnioEstreno() == null) {
             return ResponseEntity.badRequest().build();
-    	}
+        }
+
+        if (pelicula.getGenero() != null && pelicula.getGenero().getIdGenero() != 0) {
+            Genero genero = generoRepository.findById(pelicula.getGenero().getIdGenero()).orElse(null);
+            if (genero != null) {
+                pelicula.setGenero(genero);
+            }
+        }
+
+        if (pelicula.getDirector() != null && pelicula.getDirector().getIdDirector() != 0) {
+            Director director = directorRepository.findById(pelicula.getDirector().getIdDirector()).orElse(null);
+            if (director != null) {
+                pelicula.setDirector(director);
+            }
+        }
+
+        if (pelicula.getActores() != null && !pelicula.getActores().isEmpty()) {
+            List<Actor> actores = new ArrayList<>();
+            for (Actor actor : pelicula.getActores()) {
+                Optional<Actor> actorOptional = actorRepository.findById(actor.getIdActor());
+                actorOptional.ifPresent(actores::add);
+            }
+            pelicula.setActores(actores);
+        }
+
         Pelicula savedPelicula = peliculaRepository.save(pelicula);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedPelicula);
     }
